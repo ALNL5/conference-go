@@ -11,7 +11,7 @@ class State(models.Model):
     direct URL to view it.
     """
 
-    id = models.PositiveIntegerField(primary_key=True)
+    # id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=2, unique=True)
 
