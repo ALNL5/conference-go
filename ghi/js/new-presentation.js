@@ -24,6 +24,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             console.log(json)
 
             const conf = Object.fromEntries(formData);
+            console.log(conf)
             const presentationUrl = `http://localhost:8000${conf.conference}presentations/`;
             const fetchConfig = {
                 method: "post",

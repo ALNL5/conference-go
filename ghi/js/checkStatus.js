@@ -2,10 +2,10 @@
 const payloadCookie = await cookieStore.get("jwt_access_payload");
 if (payloadCookie) {
   // The cookie value is a JSON-formatted string, so parse it
-  const encodedPayload = JSON.parse(payloadCookie.value);
+  // const encodedPayload = payloadCookie.value;
 
   // Convert the encoded payload from base64 to normal string
-  const decodedPayload = atob(encodedPayload);
+  const decodedPayload = atob(payloadCookie.value);
 
   // The payload is a JSON-formatted string, so parse it
   const payload = JSON.parse(decodedPayload);
@@ -26,5 +26,10 @@ if (payloadCookie) {
   if (permissions.includes("events.add_location")) {
     const selectTag2 = document.getElementById("new-location");
     selectTag2.classList.remove("d-none");
+  }
+
+  if (permissions.includes("presentations.add_presentation")) {
+    const selectTag3 = document.getElementById("new-presentation");
+    selectTag3.classList.remove("d-none");
   }
 }
