@@ -1,14 +1,16 @@
 window.addEventListener('DOMContentLoaded', async () => {
-    const selectTag = document.getElementById('conference');
 
     const url = 'http://localhost:8000/api/conferences/';
+
     const response = await fetch(url);
+
     if (response.ok) {
       const data = await response.json();
 
+      const selectTag = document.getElementById('conference');
       for (let conference of data.conferences) {
         const option = document.createElement('option');
-        option.value = conference.href;
+        option.value = conference.id;
         option.innerHTML = conference.name;
         selectTag.appendChild(option);
       }
@@ -22,6 +24,10 @@ window.addEventListener('DOMContentLoaded', async () => {
             let dataObject = Object.fromEntries(formData);
             let json = JSON.stringify(dataObject);
             console.log(json)
+
+            // Or this way
+            // const conferenceId = selectTag.options[selectTag.selectedIndex].value;
+            // const locationUrl = `http://localhost:8000/api/conferences/${conferenceId}/presentations/`;
 
             const conf = Object.fromEntries(formData);
             console.log(conf)
