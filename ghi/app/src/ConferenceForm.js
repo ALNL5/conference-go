@@ -32,14 +32,18 @@ class ConferenceForm extends React.Component {
 
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       this.setState({ locations: data.locations });
     }
   }
+
+
 
   async handleSubmit(event) {
     event.preventDefault();
     const data = {...this.state};
     delete data.locations;
+
 
     const conferenceUrl = 'http://localhost:8000/api/conferences/';
     const fetchConfig = {
@@ -136,7 +140,7 @@ class ConferenceForm extends React.Component {
                   <option value="">Choose a location</option>
                   {this.state.locations.map(location => {
                     return (
-                      <option key={location.name} value={location.name}>{location.name}</option>
+                      <option key={location.id} value={location.id}>{location.name}</option>
                     )
                   })}
                 </select>
